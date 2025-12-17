@@ -7,6 +7,19 @@ aarch64-darwin).
 Use any Node.js version in your Nix flake without waiting for nixpkgs to package
 it.
 
+## Disclaimer
+
+I made this primarily for myself, and I trust me. You probably shouldn't just
+trust me automatically.
+
+Before using this flake, you should:
+- Read the code and understand what it does
+- Verify the checksums and URLs in `data.nix` against https://nodejs.org/dist/
+  yourself for the specific versions of node you want
+
+This is a single-maintainer project with automated generation. Use at your own
+risk.
+
 ## Usage
 
 Add this flake as an input:
@@ -42,4 +55,3 @@ this repo like so:
 ```sh
 cargo run --release -- --output data.nix
 ```
-
