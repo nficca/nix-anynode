@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use std::fs;
 
 use askama::Template;
 use clap::Parser;
@@ -20,7 +21,11 @@ lazy_static! {
 }
 
 #[derive(Parser, Debug)]
-struct Args {}
+struct Args {
+    /// Output file path to write the generated Nix data
+    #[clap(long, short)]
+    output: Option<std::path::PathBuf>,
+}
 
 #[tokio::main]
 async fn main() -> Result<()> {
@@ -74,7 +79,13 @@ async fn main() -> Result<()> {
         .collect::<DataNixTemplate>()
         .await;
 
-    println!("{}", template.render()?);
+    let rendered = template.render()?;
+
+    if let Some(filepath) = args.output {
+        fs::write(&filepath, rendered)?;
+    } else {
+        println!("{rendered}");
+    }
 
     Ok(())
 }
