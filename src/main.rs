@@ -19,6 +19,7 @@ mod nix;
 mod shasums;
 
 static NODEJS_DIST_URL: &str = "https://nodejs.org/dist/";
+static SKIP_ENTRIES: &[&str] = &["..", "npm", "patch"];
 
 lazy_static! {
     static ref ANCHOR_SELECTOR: Selector = Selector::parse("a").expect("parse anchor selector");
@@ -73,8 +74,8 @@ async fn main() -> Result<()> {
             // We only want the version directories.
             let (directory, _) = directory.rsplit_once('/')?;
 
-            // Also skip the `..` directory since it's not a version.
-            if directory == ".." {
+            // Also skip some other entries that are not versions.
+            if SKIP_ENTRIES.contains(&directory) {
                 return None;
             }
 
