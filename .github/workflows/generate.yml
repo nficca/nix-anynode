@@ -19,10 +19,10 @@ jobs:
       - name: Generate data.nix
         run: cargo run --release -- --output data.nix
 
-      - name: Commit and push changes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data.nix
-          git commit -m "Update data.nix with latest Node.js versions" || echo "No changes to commit"
-          git push
+      # - name: Commit and push changes
+      #   run: |
+      #     git config user.name "github-actions[bot]"
+      #     git config user.email "github-actions[bot]@users.noreply.github.com"
+      #     git add data.nix
+      #     git commit -m "Update data.nix with latest Node.js versions" || echo "No changes to commit"
+      #     git push

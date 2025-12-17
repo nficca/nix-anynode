@@ -4,10 +4,13 @@ use std::io::{self, Write};
 
 use askama::Template;
 use clap::Parser;
-use color_eyre::eyre::Result;
+use color_eyre::eyre::{Context, Result};
 use futures_lite::StreamExt;
 use lazy_static::lazy_static;
 use scraper::Selector;
+use tracing_subscriber::EnvFilter;
+use tracing_subscriber::layer::SubscriberExt;
+use tracing_subscriber::util::SubscriberInitExt;
 
 use crate::{nix::DataNixTemplate, shasums::ShasumsText};
 
@@ -47,6 +50,7 @@ struct Args {
 
 #[tokio::main]
 async fn main() -> Result<()> {
+    configure_telemetry()?;
     let args = Args::parse();
 
     let client = client::Client::new()?;
@@ -56,6 +60,8 @@ async fn main() -> Result<()> {
     // The distribution index is a typical HTML page with links for every file
     // and subdirectory, so we want to iterator over the anchor tags.
     let entry_stream = futures_lite::stream::iter(index.select(&ANCHOR_SELECTOR).into_iter());
+
+    tracing::info!("Successfully fetched {NODEJS_DIST_URL}");
 
     let template = entry_stream
         .filter_map(|anchor| {
@@ -105,6 +111,9 @@ async fn main() -> Result<()> {
         })
         .skip(args.skip)
         .take(args.take)
+        .inspect(|version| {
+            tracing::info!(entry = version.directory, "Succesfully processed");
+        })
         .collect::<DataNixTemplate>()
         .await;
 
@@ -112,8 +121,10 @@ async fn main() -> Result<()> {
     // which implement [`io::Write`], so we can create a single writer box for
     // the template to write into.
     let mut writer: Box<dyn io::Write> = if let Some(filepath) = args.output {
+        tracing::info!("Writing to {}", filepath.display());
         Box::new(File::create(&filepath)?)
     } else {
+        tracing::info!("Writing to stdout");
         Box::new(io::stdout())
     };
 
@@ -124,4 +135,28 @@ async fn main() -> Result<()> {
     writer.write(b"\n")?;
 
     Ok(())
+}
+
+fn configure_telemetry() -> Result<()> {
+    tracing_subscriber::registry()
+        .with(
+            tracing_subscriber::fmt::layer()
+                .pretty()
+                .compact()
+                .without_time()
+                .with_file(false)
+                .with_line_number(false)
+                .with_target(false),
+        )
+        .with(
+            EnvFilter::builder()
+                .with_default_directive(
+                    "info"
+                        .parse()
+                        .expect("default filter directive should be valid"),
+                )
+                .from_env_lossy(),
+        )
+        .try_init()
+        .context("configure local tracing subscriber")
 }
