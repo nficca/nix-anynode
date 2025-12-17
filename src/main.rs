@@ -26,6 +26,16 @@ struct Args {
     /// Output file path to write the generated Nix data
     #[clap(long, short)]
     output: Option<std::path::PathBuf>,
+
+    /// The number of node version listings to skip over. Use in conjunction
+    /// with `--take` to simulate pagination.
+    #[clap(long, default_value_t = 0)]
+    skip: usize,
+
+    /// The maximum number of node version listings to process. Can be used in
+    /// conjunction with `--skip` to simulate pagination.
+    #[clap(long, default_value_t = std::usize::MAX)]
+    take: usize,
 }
 
 #[tokio::main]
@@ -39,8 +49,6 @@ async fn main() -> Result<()> {
     let entry_stream = futures_lite::stream::iter(index.select(&ANCHOR_SELECTOR).into_iter());
 
     let template = entry_stream
-        .skip(635) // TODO: Remove this! It's just for testing.
-        .take(5) // TODO: Remove this! It's just for testing.
         .filter_map(|anchor| {
             // The anchor tags will link to the version directories.
             // E.g. `v0.10.39/` or `latest-v8.x/`
@@ -49,6 +57,11 @@ async fn main() -> Result<()> {
             // There maybe some entries that aren't version directories.
             // We only want the version directories.
             let (directory, _) = directory.rsplit_once('/')?;
+
+            // Also skip the `..` directory since it's not a version.
+            if directory == ".." {
+                return None;
+            }
 
             Some(directory.to_string())
         })
@@ -77,6 +90,8 @@ async fn main() -> Result<()> {
                 system_packages,
             }
         })
+        .skip(args.skip)
+        .take(args.take)
         .collect::<DataNixTemplate>()
         .await;
 
