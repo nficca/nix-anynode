@@ -1,5 +1,6 @@
 use std::collections::HashMap;
-use std::fs;
+use std::fs::File;
+use std::io::{self, Write};
 
 use askama::Template;
 use clap::Parser;
@@ -79,13 +80,20 @@ async fn main() -> Result<()> {
         .collect::<DataNixTemplate>()
         .await;
 
-    let rendered = template.render()?;
-
-    if let Some(filepath) = args.output {
-        fs::write(&filepath, rendered)?;
+    // We either want to write to stdout or a file if one is given, both of
+    // which implement [`io::Write`], so we can create a single writer box for
+    // the template to write into.
+    let mut writer: Box<dyn io::Write> = if let Some(filepath) = args.output {
+        Box::new(File::create(&filepath)?)
     } else {
-        println!("{rendered}");
-    }
+        Box::new(io::stdout())
+    };
+
+    // Askama will render the template chunk by chunk into our output box.
+    template.write_into(&mut writer)?;
+
+    // Insert a final newline for convention.
+    writer.write(b"\n")?;
 
     Ok(())
 }
