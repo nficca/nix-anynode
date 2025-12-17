@@ -3,7 +3,10 @@ use color_eyre::eyre::{Context, Result};
 use futures_lite::StreamExt;
 use lazy_static::lazy_static;
 use scraper::{Html, Selector};
-use semver::Version;
+
+use crate::shasums::ShasumsText;
+
+mod shasums;
 
 static APP_USER_AGENT: &str = concat!(env!("CARGO_PKG_NAME"), "/", env!("CARGO_PKG_VERSION"),);
 static NODEJS_DIST_URL: &str = "https://nodejs.org/dist/";
@@ -26,44 +29,33 @@ async fn main() -> Result<()> {
 
     let entry_stream = futures_lite::stream::iter(index.select(&ANCHOR_SELECTOR).into_iter());
 
-    entry_stream
+    let s = entry_stream
+        .skip(800) // TODO: Remove this! It's just for testing.
+        .take(5) // TODO: Remove this! It's just for testing.
         .filter_map(|anchor| {
             // The anchor tags will link to the version directories.
             // E.g. `v0.10.39/` or `latest-v8.x/`
             let directory = anchor.inner_html();
 
-            // Strip the `v` prefix
-            let stripped = match directory.split_once('v')? {
-                ("", stripped) => stripped,
-                _ => return None,
-            };
+            // There maybe some entries that aren't version directories.
+            // We only want the version directories.
+            let (directory, _) = directory.rsplit_once('/')?;
 
-            // Strip the `/` suffix
-            let raw_version = match stripped.rsplit_once('/')? {
-                (raw_version, "") => raw_version,
-                _ => return None,
-            };
-
-            let version = Version::parse(raw_version).ok()?;
-
-            Some(IndexEntry { directory, version })
+            Some(directory.to_string())
         })
-        .skip(400) // TODO: Remove this! It's just for testing.
-        .take(5) // TODO: Remove this! It's just for testing.
-        .then(|entry| async {
-            let url = format!("{}/{}SHASUMS256.txt", NODEJS_DIST_URL, entry.directory);
+        .then(|directory| async {
+            let url = format!("{}/{}/SHASUMS256.txt", NODEJS_DIST_URL, directory);
             match client.get_text(&url).await {
-                Ok(shasums) => Some((entry, shasums)),
+                Ok(shasums) => Some((directory, ShasumsText::from(shasums))),
                 _ => None,
             }
         })
         .filter_map(|option| option)
-        .for_each(|(entry, shasums)| {
-            println!("{}", entry.version);
-            println!("{shasums}");
-            println!("");
-        })
+        .map(|(directory, shasums)| format!("\"{directory}\" = {};\n", shasums.to_nix_expression()))
+        .collect::<String>()
         .await;
+
+    println!("{{ {s} }};");
 
     Ok(())
 }
@@ -104,10 +96,4 @@ impl Client {
             .await
             .context("get text")
     }
-}
-
-#[derive(Debug, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
-struct IndexEntry {
-    version: Version,
-    directory: String,
 }
