@@ -1,0 +1,12 @@
+{
+{%- for version in versions %}
+  "{{ version.directory }}" = {
+    {%- for (system, package) in version.system_packages %}
+    "{{ system }}" = {
+      url = "{{ package.url }}";
+      sha256 = "{{ package.sha256 }}";
+    };
+  {%- endfor %}
+  };
+{%- endfor %}
+}
