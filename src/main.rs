@@ -39,27 +39,29 @@ async fn main() -> Result<()> {
             };
 
             // Strip the `/` suffix
-            let version = match stripped.rsplit_once('/')? {
-                (version, "") => Version::parse(version).ok()?,
+            let raw_version = match stripped.rsplit_once('/')? {
+                (raw_version, "") => raw_version,
                 _ => return None,
             };
 
+            let version = Version::parse(raw_version).ok()?;
+
             Some(IndexEntry { directory, version })
         })
+        .skip(400) // TODO: Remove this! It's just for testing.
+        .take(5) // TODO: Remove this! It's just for testing.
         .then(|entry| async {
-            let url = format!("{}/{}", NODEJS_DIST_URL, entry.directory);
-            match client.get_html(&url).await {
-                Ok(html) => Some((entry, html)),
+            let url = format!("{}/{}SHASUMS256.txt", NODEJS_DIST_URL, entry.directory);
+            match client.get_text(&url).await {
+                Ok(shasums) => Some((entry, shasums)),
                 _ => None,
             }
         })
         .filter_map(|option| option)
-        .for_each(|(entry, html)| {
+        .for_each(|(entry, shasums)| {
             println!("{}", entry.version);
-            for element in html.select(&ANCHOR_SELECTOR) {
-                let inner_html = element.inner_html();
-                println!("  {}", inner_html);
-            }
+            println!("{shasums}");
+            println!("");
         })
         .await;
 
@@ -86,16 +88,21 @@ impl Client {
     }
 
     pub async fn get_html(&self, url: &str) -> Result<Html> {
+        self.get_text(url)
+            .await
+            .map(|text| Html::parse_document(&text))
+    }
+
+    pub async fn get_text(&self, url: &str) -> Result<String> {
         self.inner
             .get(url)
             .timeout(std::time::Duration::from_secs(REQUEST_TIMEOUT_SECS))
             .send()
             .await
-            .context("get html request")?
+            .context("get response")?
             .text()
             .await
-            .context("get html request text")
-            .map(|text| Html::parse_document(&text))
+            .context("get text")
     }
 }
 
