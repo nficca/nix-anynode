@@ -1,7 +1,44 @@
-use crate::NODEJS_DIST_URL;
-
 #[derive(Debug, Clone)]
 pub struct ShasumsText(String);
+
+const PREFERRED_ARCHIVE_EXTENSION: &str = ".tar.gz";
+
+impl From<String> for ShasumsText {
+    fn from(value: String) -> Self {
+        Self(value)
+    }
+}
+
+impl ShasumsText {
+    pub fn entries<'a>(&'a self) -> impl Iterator<Item = ShasumsTextEntry<'a>> {
+        self.0
+            .split('\n')
+            .into_iter()
+            .filter_map(|line| {
+                let mut parts = line.split_whitespace();
+                let checksum = parts.next()?;
+                let filepath = parts.next()?;
+                let (filestem, _) = filepath.rsplit_once(PREFERRED_ARCHIVE_EXTENSION)?;
+                let mut target_parts = filestem.rsplitn(3, '-');
+                let arch = target_parts.next()?;
+                let system = target_parts.next()?;
+                let target = Target::from_system_arch(system, arch)?;
+
+                Some(ShasumsTextEntry {
+                    filepath,
+                    target,
+                    checksum,
+                })
+            })
+            .into_iter()
+    }
+}
+
+pub struct ShasumsTextEntry<'a> {
+    pub filepath: &'a str,
+    pub target: Target,
+    pub checksum: &'a str,
+}
 
 pub enum Target {
     DarwinArm64,
@@ -30,45 +67,5 @@ impl Target {
             ("darwin", "arm64") => Some(Self::DarwinArm64),
             _ => None,
         }
-    }
-}
-
-const PREFERRED_ARCHIVE_EXTENSION: &str = ".tar.gz";
-
-impl From<String> for ShasumsText {
-    fn from(value: String) -> Self {
-        Self(value)
-    }
-}
-
-impl ShasumsText {
-    pub fn iter<'a>(&'a self) -> impl Iterator<Item = (&'a str, Target, &'a str)> {
-        self.0
-            .split('\n')
-            .into_iter()
-            .filter_map(|line| {
-                let mut parts = line.split_whitespace();
-                let checksum = parts.next()?;
-                let filepath = parts.next()?;
-                let (filestem, _) = filepath.rsplit_once(PREFERRED_ARCHIVE_EXTENSION)?;
-                let mut target_parts = filestem.rsplitn(3, '-');
-                let arch = target_parts.next()?;
-                let system = target_parts.next()?;
-                let target = Target::from_system_arch(system, arch)?;
-
-                Some((filepath, target, checksum))
-            })
-            .into_iter()
-    }
-
-    pub fn to_nix_expression(&self) -> String {
-        self.iter()
-            .map(|(filepath, target, checksum)| {
-                format!(
-                    "{{\"{target}\" = {{ url = \"{}{filepath}\"; sha256 = \"{checksum}\"; }}; }}",
-                    NODEJS_DIST_URL
-                )
-            })
-            .collect()
     }
 }

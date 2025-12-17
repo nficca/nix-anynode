@@ -51,11 +51,26 @@ async fn main() -> Result<()> {
             }
         })
         .filter_map(|option| option)
-        .map(|(directory, shasums)| format!("\"{directory}\" = {};\n", shasums.to_nix_expression()))
+        .map(|(directory, shasums_text)| {
+            let mut version_entry = format!("\"{directory}\" = {{\n");
+            for entry in shasums_text.entries() {
+                let mut target_entry = format!("\"{}\" = {{\n", entry.target);
+                target_entry.push_str(&format!(
+                    "url = \"{}{}/{}\";\n",
+                    NODEJS_DIST_URL, directory, entry.filepath
+                ));
+                target_entry.push_str(&format!("sha256 = \"{}\";\n", entry.checksum));
+                target_entry.push_str("};\n");
+
+                version_entry.push_str(&target_entry);
+            }
+            version_entry.push_str("};\n");
+            version_entry
+        })
         .collect::<String>()
         .await;
 
-    println!("{{ {s} }};");
+    println!("{{ {s} }}");
 
     Ok(())
 }
