@@ -1,5 +1,5 @@
 {
-  description = "Any node version";
+  description = "All distributed versions of node for default systems.";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs";
@@ -23,7 +23,7 @@
           version: systems:
 
           pkgs.stdenv.mkDerivation {
-            pname = "nodejs-${system}-${version}";
+            pname = "nodejs";
             version = "${version}";
 
             src = pkgs.fetchurl {
