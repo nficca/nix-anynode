@@ -21,6 +21,13 @@ lazy_static! {
     static ref ANCHOR_SELECTOR: Selector = Selector::parse("a").expect("parse anchor selector");
 }
 
+/// This program scrapes the nodejs binary distribution index
+/// (https://nodejs.org/dist/) and outputs a Nix attribute set that contains
+/// every nodejs version with the URL and sha256 of the system binaries
+/// available for each.
+///
+/// By default, this will output to stdout, but you can instead write to a file
+/// via the `--output` flag.
 #[derive(Parser, Debug)]
 struct Args {
     /// Output file path to write the generated Nix data
@@ -46,6 +53,8 @@ async fn main() -> Result<()> {
 
     let index = client.get_html(NODEJS_DIST_URL).await?;
 
+    // The distribution index is a typical HTML page with links for every file
+    // and subdirectory, so we want to iterator over the anchor tags.
     let entry_stream = futures_lite::stream::iter(index.select(&ANCHOR_SELECTOR).into_iter());
 
     let template = entry_stream
@@ -66,6 +75,10 @@ async fn main() -> Result<()> {
             Some(directory.to_string())
         })
         .then(|directory| async {
+            // Every version directory should contain a `SHASUMS256.txt` file
+            // which lists the files in that directory and their corresponding
+            // checksums. This is where all the information we need for the
+            // ouput is.
             let url = format!("{}/{}/SHASUMS256.txt", NODEJS_DIST_URL, directory);
             match client.get_text(&url).await {
                 Ok(shasums) => Some((directory, ShasumsText::from(shasums))),

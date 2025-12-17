@@ -4,6 +4,9 @@ use askama::Template;
 
 use crate::shasums::Target;
 
+/// The root template for the Nix output of the program. We use [`askama`] for
+/// templating, so take a look at the template file to see how this will be
+/// rendered.
 #[derive(Template, Default, Debug, Clone)]
 #[template(path = "data.nix.template", escape = "none")]
 pub struct DataNixTemplate {
