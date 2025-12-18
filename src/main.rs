@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::collections::BTreeMap;
 use std::fs::File;
 use std::io::{self, Write};
 
@@ -103,7 +103,7 @@ async fn main() -> Result<()> {
 
                     (system, package)
                 })
-                .collect::<HashMap<_, _>>();
+                .collect::<BTreeMap<_, _>>();
 
             nix::VersionData {
                 directory,

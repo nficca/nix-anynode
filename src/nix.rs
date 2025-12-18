@@ -1,4 +1,7 @@
-use std::collections::HashMap;
+use std::{
+    collections::{BTreeMap, BTreeSet},
+    hash::Hash,
+};
 
 use askama::Template;
 
@@ -10,19 +13,45 @@ use crate::shasums::Target;
 #[derive(Template, Default, Debug, Clone)]
 #[template(path = "data.nix.template", escape = "none")]
 pub struct DataNixTemplate {
-    versions: Vec<VersionData>,
+    versions: BTreeSet<VersionData>,
 }
 
 impl Extend<VersionData> for DataNixTemplate {
     fn extend<T: IntoIterator<Item = VersionData>>(&mut self, iter: T) {
-        self.versions.extend(iter);
+        self.versions.append(&mut iter.into_iter().collect());
     }
 }
 
 #[derive(Debug, Clone)]
 pub struct VersionData {
     pub directory: String,
-    pub system_packages: HashMap<System, PackageData>,
+    pub system_packages: BTreeMap<System, PackageData>,
+}
+
+impl Ord for VersionData {
+    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+        self.directory.cmp(&other.directory)
+    }
+}
+
+impl PartialOrd for VersionData {
+    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+        Some(self.cmp(other))
+    }
+}
+
+impl PartialEq for VersionData {
+    fn eq(&self, other: &Self) -> bool {
+        self.directory == other.directory
+    }
+}
+
+impl Eq for VersionData {}
+
+impl Hash for VersionData {
+    fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
+        self.directory.hash(state);
+    }
 }
 
 #[derive(Debug, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
