@@ -1,20 +1,20 @@
 {
   "latest" = {
     "aarch64-darwin" = {
-      url = "https://nodejs.org/dist/latest/node-v25.3.0-darwin-arm64.tar.gz";
-      sha256 = "d80f384c182971724a7aa819173084e1d8244338fa8e9271a1961d38274d7209";
+      url = "https://nodejs.org/dist/latest/node-v25.4.0-darwin-arm64.tar.gz";
+      sha256 = "bfa7af56c0f24074d7a6c5b08d837b8be211f44db5fcc93dcb2cb96153e49b65";
     };
     "x86_64-darwin" = {
-      url = "https://nodejs.org/dist/latest/node-v25.3.0-darwin-x64.tar.gz";
-      sha256 = "d6d494e5deca973556e146555cdd29b927b0adb3cae2f234b8e1a92310657c39";
+      url = "https://nodejs.org/dist/latest/node-v25.4.0-darwin-x64.tar.gz";
+      sha256 = "1c75d67c9416c61a948c7cd5662b4293daa0e5a9ddac664f17921ccd5d41a016";
     };
     "aarch64-linux" = {
-      url = "https://nodejs.org/dist/latest/node-v25.3.0-linux-arm64.tar.gz";
-      sha256 = "8098e098dc91ec3bf98035eeebff8d9b3e46fb9e14c1e8c377986f76e0b8368f";
+      url = "https://nodejs.org/dist/latest/node-v25.4.0-linux-arm64.tar.gz";
+      sha256 = "b059f504162053f4a5d71e85f3d1d89032a7c14eb1a7223c76ef2ff9ce34612c";
     };
     "x86_64-linux" = {
-      url = "https://nodejs.org/dist/latest/node-v25.3.0-linux-x64.tar.gz";
-      sha256 = "cc91362eb9a009efa26117c39c7bd55fe130123f01cf60d300b8b57e9501c27c";
+      url = "https://nodejs.org/dist/latest/node-v25.4.0-linux-x64.tar.gz";
+      sha256 = "5951a889ab65b3a73cc88e6d412d70499f523a89fe553b5349471af7586f2be2";
     };
   };
   "latest-argon" = {
@@ -459,20 +459,20 @@
   };
   "latest-v25.x" = {
     "aarch64-darwin" = {
-      url = "https://nodejs.org/dist/latest-v25.x/node-v25.3.0-darwin-arm64.tar.gz";
-      sha256 = "d80f384c182971724a7aa819173084e1d8244338fa8e9271a1961d38274d7209";
+      url = "https://nodejs.org/dist/latest-v25.x/node-v25.4.0-darwin-arm64.tar.gz";
+      sha256 = "bfa7af56c0f24074d7a6c5b08d837b8be211f44db5fcc93dcb2cb96153e49b65";
     };
     "x86_64-darwin" = {
-      url = "https://nodejs.org/dist/latest-v25.x/node-v25.3.0-darwin-x64.tar.gz";
-      sha256 = "d6d494e5deca973556e146555cdd29b927b0adb3cae2f234b8e1a92310657c39";
+      url = "https://nodejs.org/dist/latest-v25.x/node-v25.4.0-darwin-x64.tar.gz";
+      sha256 = "1c75d67c9416c61a948c7cd5662b4293daa0e5a9ddac664f17921ccd5d41a016";
     };
     "aarch64-linux" = {
-      url = "https://nodejs.org/dist/latest-v25.x/node-v25.3.0-linux-arm64.tar.gz";
-      sha256 = "8098e098dc91ec3bf98035eeebff8d9b3e46fb9e14c1e8c377986f76e0b8368f";
+      url = "https://nodejs.org/dist/latest-v25.x/node-v25.4.0-linux-arm64.tar.gz";
+      sha256 = "b059f504162053f4a5d71e85f3d1d89032a7c14eb1a7223c76ef2ff9ce34612c";
     };
     "x86_64-linux" = {
-      url = "https://nodejs.org/dist/latest-v25.x/node-v25.3.0-linux-x64.tar.gz";
-      sha256 = "cc91362eb9a009efa26117c39c7bd55fe130123f01cf60d300b8b57e9501c27c";
+      url = "https://nodejs.org/dist/latest-v25.x/node-v25.4.0-linux-x64.tar.gz";
+      sha256 = "5951a889ab65b3a73cc88e6d412d70499f523a89fe553b5349471af7586f2be2";
     };
   };
   "latest-v4.x" = {
@@ -8653,6 +8653,24 @@
     "x86_64-linux" = {
       url = "https://nodejs.org/dist/v25.3.0/node-v25.3.0-linux-x64.tar.gz";
       sha256 = "cc91362eb9a009efa26117c39c7bd55fe130123f01cf60d300b8b57e9501c27c";
+    };
+  };
+  "v25.4.0" = {
+    "aarch64-darwin" = {
+      url = "https://nodejs.org/dist/v25.4.0/node-v25.4.0-darwin-arm64.tar.gz";
+      sha256 = "bfa7af56c0f24074d7a6c5b08d837b8be211f44db5fcc93dcb2cb96153e49b65";
+    };
+    "x86_64-darwin" = {
+      url = "https://nodejs.org/dist/v25.4.0/node-v25.4.0-darwin-x64.tar.gz";
+      sha256 = "1c75d67c9416c61a948c7cd5662b4293daa0e5a9ddac664f17921ccd5d41a016";
+    };
+    "aarch64-linux" = {
+      url = "https://nodejs.org/dist/v25.4.0/node-v25.4.0-linux-arm64.tar.gz";
+      sha256 = "b059f504162053f4a5d71e85f3d1d89032a7c14eb1a7223c76ef2ff9ce34612c";
+    };
+    "x86_64-linux" = {
+      url = "https://nodejs.org/dist/v25.4.0/node-v25.4.0-linux-x64.tar.gz";
+      sha256 = "5951a889ab65b3a73cc88e6d412d70499f523a89fe553b5349471af7586f2be2";
     };
   };
   "v4.0.0" = {
