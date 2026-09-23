@@ -1,20 +1,20 @@
 {
   "latest" = {
     "aarch64-darwin" = {
-      url = "https://nodejs.org/dist/latest/node-v26.9.0-darwin-arm64.tar.gz";
-      sha256 = "6f3de7ed853ee283b4bf24b6e426618f1d357401ce5815db1866eb85eb4b05d9";
+      url = "https://nodejs.org/dist/latest/node-v26.10.0-darwin-arm64.tar.gz";
+      sha256 = "751fdf7439f115d87ee2a8f3f18c065b6151852068e3e666ac60ac2996f75ac9";
     };
     "x86_64-darwin" = {
-      url = "https://nodejs.org/dist/latest/node-v26.9.0-darwin-x64.tar.gz";
-      sha256 = "06b2e742ed9025dc84adc830243b3f731956eac9c321bccd0ede384209af02a8";
+      url = "https://nodejs.org/dist/latest/node-v26.10.0-darwin-x64.tar.gz";
+      sha256 = "ebbe9ab9b58ad6bb54390d6e2c862c1afa7d4475fb7e8ae8146acde211bf70df";
     };
     "aarch64-linux" = {
-      url = "https://nodejs.org/dist/latest/node-v26.9.0-linux-arm64.tar.gz";
-      sha256 = "d5077591aa38b48d90bf9b3ac10da8d2f40dce289b20294913c58c19f153eb12";
+      url = "https://nodejs.org/dist/latest/node-v26.10.0-linux-arm64.tar.gz";
+      sha256 = "423a41bff8e2a2fa15e702fefe2919ef95823b2378744daccb8439302534b44f";
     };
     "x86_64-linux" = {
-      url = "https://nodejs.org/dist/latest/node-v26.9.0-linux-x64.tar.gz";
-      sha256 = "03d9104fc4f19652e74480fed11c023d75981464b7292f21a601c3f95ce7d90d";
+      url = "https://nodejs.org/dist/latest/node-v26.10.0-linux-x64.tar.gz";
+      sha256 = "cb5c9ce9c80d7b8821e3a258543c71b939138cf17c74d5cc44bbe85d6dbc5ad8";
     };
   };
   "latest-argon" = {
@@ -477,20 +477,20 @@
   };
   "latest-v26.x" = {
     "aarch64-darwin" = {
-      url = "https://nodejs.org/dist/latest-v26.x/node-v26.9.0-darwin-arm64.tar.gz";
-      sha256 = "6f3de7ed853ee283b4bf24b6e426618f1d357401ce5815db1866eb85eb4b05d9";
+      url = "https://nodejs.org/dist/latest-v26.x/node-v26.10.0-darwin-arm64.tar.gz";
+      sha256 = "751fdf7439f115d87ee2a8f3f18c065b6151852068e3e666ac60ac2996f75ac9";
     };
     "x86_64-darwin" = {
-      url = "https://nodejs.org/dist/latest-v26.x/node-v26.9.0-darwin-x64.tar.gz";
-      sha256 = "06b2e742ed9025dc84adc830243b3f731956eac9c321bccd0ede384209af02a8";
+      url = "https://nodejs.org/dist/latest-v26.x/node-v26.10.0-darwin-x64.tar.gz";
+      sha256 = "ebbe9ab9b58ad6bb54390d6e2c862c1afa7d4475fb7e8ae8146acde211bf70df";
     };
     "aarch64-linux" = {
-      url = "https://nodejs.org/dist/latest-v26.x/node-v26.9.0-linux-arm64.tar.gz";
-      sha256 = "d5077591aa38b48d90bf9b3ac10da8d2f40dce289b20294913c58c19f153eb12";
+      url = "https://nodejs.org/dist/latest-v26.x/node-v26.10.0-linux-arm64.tar.gz";
+      sha256 = "423a41bff8e2a2fa15e702fefe2919ef95823b2378744daccb8439302534b44f";
     };
     "x86_64-linux" = {
-      url = "https://nodejs.org/dist/latest-v26.x/node-v26.9.0-linux-x64.tar.gz";
-      sha256 = "03d9104fc4f19652e74480fed11c023d75981464b7292f21a601c3f95ce7d90d";
+      url = "https://nodejs.org/dist/latest-v26.x/node-v26.10.0-linux-x64.tar.gz";
+      sha256 = "cb5c9ce9c80d7b8821e3a258543c71b939138cf17c74d5cc44bbe85d6dbc5ad8";
     };
   };
   "latest-v4.x" = {
@@ -9211,6 +9211,24 @@
     "x86_64-linux" = {
       url = "https://nodejs.org/dist/v26.1.0/node-v26.1.0-linux-x64.tar.gz";
       sha256 = "62d555c329e05e3625109f2e3a8b5195b368d5ef38266292469d32f63cd98ffd";
+    };
+  };
+  "v26.10.0" = {
+    "aarch64-darwin" = {
+      url = "https://nodejs.org/dist/v26.10.0/node-v26.10.0-darwin-arm64.tar.gz";
+      sha256 = "751fdf7439f115d87ee2a8f3f18c065b6151852068e3e666ac60ac2996f75ac9";
+    };
+    "x86_64-darwin" = {
+      url = "https://nodejs.org/dist/v26.10.0/node-v26.10.0-darwin-x64.tar.gz";
+      sha256 = "ebbe9ab9b58ad6bb54390d6e2c862c1afa7d4475fb7e8ae8146acde211bf70df";
+    };
+    "aarch64-linux" = {
+      url = "https://nodejs.org/dist/v26.10.0/node-v26.10.0-linux-arm64.tar.gz";
+      sha256 = "423a41bff8e2a2fa15e702fefe2919ef95823b2378744daccb8439302534b44f";
+    };
+    "x86_64-linux" = {
+      url = "https://nodejs.org/dist/v26.10.0/node-v26.10.0-linux-x64.tar.gz";
+      sha256 = "cb5c9ce9c80d7b8821e3a258543c71b939138cf17c74d5cc44bbe85d6dbc5ad8";
     };
   };
   "v26.2.0" = {
