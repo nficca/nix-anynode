@@ -45,7 +45,7 @@ struct Args {
 
     /// The maximum number of node version listings to process. Can be used in
     /// conjunction with `--skip` to simulate pagination.
-    #[clap(long, default_value_t = std::usize::MAX)]
+    #[clap(long, default_value_t = usize::MAX)]
     take: usize,
 }
 
