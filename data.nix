@@ -1,20 +1,20 @@
 {
   "latest" = {
     "aarch64-darwin" = {
-      url = "https://nodejs.org/dist/latest/node-v26.11.1-darwin-arm64.tar.gz";
-      sha256 = "d916511b55965e91be7a88e17f88d895b6793ceaba3e6c9b194aefe51c2c65ac";
+      url = "https://nodejs.org/dist/latest/node-v26.12.0-darwin-arm64.tar.gz";
+      sha256 = "2a154d4a5458930e0a2d6a1ecf64eddf5a2b3e1c13636b609c2ecb042e8c4553";
     };
     "x86_64-darwin" = {
-      url = "https://nodejs.org/dist/latest/node-v26.11.1-darwin-x64.tar.gz";
-      sha256 = "9a8129bd9ab08039793dd1143a7aedee6b5d60ac06592ad938d8bddf36142f3a";
+      url = "https://nodejs.org/dist/latest/node-v26.12.0-darwin-x64.tar.gz";
+      sha256 = "878ecede191c7abc1bff01d3fb81f7ed81aa1161040dba18776b8ff8593614b1";
     };
     "aarch64-linux" = {
-      url = "https://nodejs.org/dist/latest/node-v26.11.1-linux-arm64.tar.gz";
-      sha256 = "170454fb022f5e9b5f6cc76c25fa32ef5100895be44eb04e92f9780591491bbf";
+      url = "https://nodejs.org/dist/latest/node-v26.12.0-linux-arm64.tar.gz";
+      sha256 = "ec53c915c3fdd8786c5685abd25ae3fe9fba0692307f9811d7caaadea1bcaf03";
     };
     "x86_64-linux" = {
-      url = "https://nodejs.org/dist/latest/node-v26.11.1-linux-x64.tar.gz";
-      sha256 = "15fc043a51a5783f2f4b634561091658f5a7f0e3db03f997dca3a8033a33e45b";
+      url = "https://nodejs.org/dist/latest/node-v26.12.0-linux-x64.tar.gz";
+      sha256 = "d9f88af72ad34f7ddf8e67289829f1698f54b6254f7d4f54b7453117ff1a3d2c";
     };
   };
   "latest-argon" = {
@@ -175,20 +175,20 @@
   };
   "latest-krypton" = {
     "aarch64-darwin" = {
-      url = "https://nodejs.org/dist/latest-krypton/node-v24.21.0-darwin-arm64.tar.gz";
-      sha256 = "bed7eea5325e1108f32ce5228ddd6a5f0f08a499ee42aa7442aea583702f6057";
+      url = "https://nodejs.org/dist/latest-krypton/node-v24.22.0-darwin-arm64.tar.gz";
+      sha256 = "6a9724d9b50a5f22b4816cded441b5a8d9ddae546191a5e5b7efa5a5e2ee26d5";
     };
     "x86_64-darwin" = {
-      url = "https://nodejs.org/dist/latest-krypton/node-v24.21.0-darwin-x64.tar.gz";
-      sha256 = "1462cb3b3046b815cf8ea436d3da450ec1a9f11dac7e5a46b0ada5305d7e8097";
+      url = "https://nodejs.org/dist/latest-krypton/node-v24.22.0-darwin-x64.tar.gz";
+      sha256 = "495e3f273c645f3c4677d438304cdfc701729ea5dec5728f5c8e76a2dece4b91";
     };
     "aarch64-linux" = {
-      url = "https://nodejs.org/dist/latest-krypton/node-v24.21.0-linux-arm64.tar.gz";
-      sha256 = "724282c3b43aec998aa9527380465b45d229e021b58035f5f4f63095eabfe5d5";
+      url = "https://nodejs.org/dist/latest-krypton/node-v24.22.0-linux-arm64.tar.gz";
+      sha256 = "b7e7991d5407815adfa74a2a9cd4db683552c8ce32ff4a295c22e972849c3f5d";
     };
     "x86_64-linux" = {
-      url = "https://nodejs.org/dist/latest-krypton/node-v24.21.0-linux-x64.tar.gz";
-      sha256 = "6e1db87ef58b8819e5d5402eff1536491b18edd8eb7bee5ef7897876e88dc5ff";
+      url = "https://nodejs.org/dist/latest-krypton/node-v24.22.0-linux-x64.tar.gz";
+      sha256 = "28ea0a438de9a13bd7891fd758eee6c7819ee8af5442dfd8d45bd65e56d4228c";
     };
   };
   "latest-v0.10.x" = {
@@ -441,20 +441,20 @@
   };
   "latest-v24.x" = {
     "aarch64-darwin" = {
-      url = "https://nodejs.org/dist/latest-v24.x/node-v24.21.0-darwin-arm64.tar.gz";
-      sha256 = "bed7eea5325e1108f32ce5228ddd6a5f0f08a499ee42aa7442aea583702f6057";
+      url = "https://nodejs.org/dist/latest-v24.x/node-v24.22.0-darwin-arm64.tar.gz";
+      sha256 = "6a9724d9b50a5f22b4816cded441b5a8d9ddae546191a5e5b7efa5a5e2ee26d5";
     };
     "x86_64-darwin" = {
-      url = "https://nodejs.org/dist/latest-v24.x/node-v24.21.0-darwin-x64.tar.gz";
-      sha256 = "1462cb3b3046b815cf8ea436d3da450ec1a9f11dac7e5a46b0ada5305d7e8097";
+      url = "https://nodejs.org/dist/latest-v24.x/node-v24.22.0-darwin-x64.tar.gz";
+      sha256 = "495e3f273c645f3c4677d438304cdfc701729ea5dec5728f5c8e76a2dece4b91";
     };
     "aarch64-linux" = {
-      url = "https://nodejs.org/dist/latest-v24.x/node-v24.21.0-linux-arm64.tar.gz";
-      sha256 = "724282c3b43aec998aa9527380465b45d229e021b58035f5f4f63095eabfe5d5";
+      url = "https://nodejs.org/dist/latest-v24.x/node-v24.22.0-linux-arm64.tar.gz";
+      sha256 = "b7e7991d5407815adfa74a2a9cd4db683552c8ce32ff4a295c22e972849c3f5d";
     };
     "x86_64-linux" = {
-      url = "https://nodejs.org/dist/latest-v24.x/node-v24.21.0-linux-x64.tar.gz";
-      sha256 = "6e1db87ef58b8819e5d5402eff1536491b18edd8eb7bee5ef7897876e88dc5ff";
+      url = "https://nodejs.org/dist/latest-v24.x/node-v24.22.0-linux-x64.tar.gz";
+      sha256 = "28ea0a438de9a13bd7891fd758eee6c7819ee8af5442dfd8d45bd65e56d4228c";
     };
   };
   "latest-v25.x" = {
@@ -477,20 +477,20 @@
   };
   "latest-v26.x" = {
     "aarch64-darwin" = {
-      url = "https://nodejs.org/dist/latest-v26.x/node-v26.11.1-darwin-arm64.tar.gz";
-      sha256 = "d916511b55965e91be7a88e17f88d895b6793ceaba3e6c9b194aefe51c2c65ac";
+      url = "https://nodejs.org/dist/latest-v26.x/node-v26.12.0-darwin-arm64.tar.gz";
+      sha256 = "2a154d4a5458930e0a2d6a1ecf64eddf5a2b3e1c13636b609c2ecb042e8c4553";
     };
     "x86_64-darwin" = {
-      url = "https://nodejs.org/dist/latest-v26.x/node-v26.11.1-darwin-x64.tar.gz";
-      sha256 = "9a8129bd9ab08039793dd1143a7aedee6b5d60ac06592ad938d8bddf36142f3a";
+      url = "https://nodejs.org/dist/latest-v26.x/node-v26.12.0-darwin-x64.tar.gz";
+      sha256 = "878ecede191c7abc1bff01d3fb81f7ed81aa1161040dba18776b8ff8593614b1";
     };
     "aarch64-linux" = {
-      url = "https://nodejs.org/dist/latest-v26.x/node-v26.11.1-linux-arm64.tar.gz";
-      sha256 = "170454fb022f5e9b5f6cc76c25fa32ef5100895be44eb04e92f9780591491bbf";
+      url = "https://nodejs.org/dist/latest-v26.x/node-v26.12.0-linux-arm64.tar.gz";
+      sha256 = "ec53c915c3fdd8786c5685abd25ae3fe9fba0692307f9811d7caaadea1bcaf03";
     };
     "x86_64-linux" = {
-      url = "https://nodejs.org/dist/latest-v26.x/node-v26.11.1-linux-x64.tar.gz";
-      sha256 = "15fc043a51a5783f2f4b634561091658f5a7f0e3db03f997dca3a8033a33e45b";
+      url = "https://nodejs.org/dist/latest-v26.x/node-v26.12.0-linux-x64.tar.gz";
+      sha256 = "d9f88af72ad34f7ddf8e67289829f1698f54b6254f7d4f54b7453117ff1a3d2c";
     };
   };
   "latest-v4.x" = {
@@ -8799,6 +8799,24 @@
       sha256 = "6e1db87ef58b8819e5d5402eff1536491b18edd8eb7bee5ef7897876e88dc5ff";
     };
   };
+  "v24.22.0" = {
+    "aarch64-darwin" = {
+      url = "https://nodejs.org/dist/v24.22.0/node-v24.22.0-darwin-arm64.tar.gz";
+      sha256 = "6a9724d9b50a5f22b4816cded441b5a8d9ddae546191a5e5b7efa5a5e2ee26d5";
+    };
+    "x86_64-darwin" = {
+      url = "https://nodejs.org/dist/v24.22.0/node-v24.22.0-darwin-x64.tar.gz";
+      sha256 = "495e3f273c645f3c4677d438304cdfc701729ea5dec5728f5c8e76a2dece4b91";
+    };
+    "aarch64-linux" = {
+      url = "https://nodejs.org/dist/v24.22.0/node-v24.22.0-linux-arm64.tar.gz";
+      sha256 = "b7e7991d5407815adfa74a2a9cd4db683552c8ce32ff4a295c22e972849c3f5d";
+    };
+    "x86_64-linux" = {
+      url = "https://nodejs.org/dist/v24.22.0/node-v24.22.0-linux-x64.tar.gz";
+      sha256 = "28ea0a438de9a13bd7891fd758eee6c7819ee8af5442dfd8d45bd65e56d4228c";
+    };
+  };
   "v24.3.0" = {
     "aarch64-darwin" = {
       url = "https://nodejs.org/dist/v24.3.0/node-v24.3.0-darwin-arm64.tar.gz";
@@ -9283,6 +9301,24 @@
     "x86_64-linux" = {
       url = "https://nodejs.org/dist/v26.11.1/node-v26.11.1-linux-x64.tar.gz";
       sha256 = "15fc043a51a5783f2f4b634561091658f5a7f0e3db03f997dca3a8033a33e45b";
+    };
+  };
+  "v26.12.0" = {
+    "aarch64-darwin" = {
+      url = "https://nodejs.org/dist/v26.12.0/node-v26.12.0-darwin-arm64.tar.gz";
+      sha256 = "2a154d4a5458930e0a2d6a1ecf64eddf5a2b3e1c13636b609c2ecb042e8c4553";
+    };
+    "x86_64-darwin" = {
+      url = "https://nodejs.org/dist/v26.12.0/node-v26.12.0-darwin-x64.tar.gz";
+      sha256 = "878ecede191c7abc1bff01d3fb81f7ed81aa1161040dba18776b8ff8593614b1";
+    };
+    "aarch64-linux" = {
+      url = "https://nodejs.org/dist/v26.12.0/node-v26.12.0-linux-arm64.tar.gz";
+      sha256 = "ec53c915c3fdd8786c5685abd25ae3fe9fba0692307f9811d7caaadea1bcaf03";
+    };
+    "x86_64-linux" = {
+      url = "https://nodejs.org/dist/v26.12.0/node-v26.12.0-linux-x64.tar.gz";
+      sha256 = "d9f88af72ad34f7ddf8e67289829f1698f54b6254f7d4f54b7453117ff1a3d2c";
     };
   };
   "v26.2.0" = {
