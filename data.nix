@@ -9645,6 +9645,20 @@
       sha256 = "03d9104fc4f19652e74480fed11c023d75981464b7292f21a601c3f95ce7d90d";
     };
   };
+  "v27.0.0-alpha.0.0.0" = {
+    "aarch64-darwin" = {
+      url = "https://nodejs.org/dist/v27.0.0-alpha.0.0.0/node-v27.0.0-alpha.0.0.0-darwin-arm64.tar.gz";
+      sha256 = "ce167d66bc5d1dd25efcfb0126425e2a1c2b267aaea2a5d0bb47892b2afacbc4";
+    };
+    "aarch64-linux" = {
+      url = "https://nodejs.org/dist/v27.0.0-alpha.0.0.0/node-v27.0.0-alpha.0.0.0-linux-arm64.tar.gz";
+      sha256 = "e87502413c0e9e695a57ef4bf8ad527fef6f60d3b7750de78de8181369e43aa4";
+    };
+    "x86_64-linux" = {
+      url = "https://nodejs.org/dist/v27.0.0-alpha.0.0.0/node-v27.0.0-alpha.0.0.0-linux-x64.tar.gz";
+      sha256 = "e5c5182f3205bb36b887643e2dfcaa545e1ee8bcec05e6c3f719fe338da70e1f";
+    };
+  };
   "v4.0.0" = {
     "x86_64-darwin" = {
       url = "https://nodejs.org/dist/v4.0.0/node-v4.0.0-darwin-x64.tar.gz";
