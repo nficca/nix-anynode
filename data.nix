@@ -511,6 +511,20 @@
       sha256 = "518674de2b621728a5e4486f5fb3b7d2900bb3cc4aa97969edaa463db99f9778";
     };
   };
+  "latest-v27.x" = {
+    "aarch64-darwin" = {
+      url = "https://nodejs.org/dist/latest-v27.x/node-v27.0.0-alpha.0.2.0-darwin-arm64.tar.gz";
+      sha256 = "6cdb0bb6197e61d456b6161e259c5fe534c3ef516fbbb9a24eb86a59ba132e20";
+    };
+    "aarch64-linux" = {
+      url = "https://nodejs.org/dist/latest-v27.x/node-v27.0.0-alpha.0.2.0-linux-arm64.tar.gz";
+      sha256 = "844ae340fdcd1acc8942368d2e2adf745ac86b0c21a308cc00ff7c93b130a215";
+    };
+    "x86_64-linux" = {
+      url = "https://nodejs.org/dist/latest-v27.x/node-v27.0.0-alpha.0.2.0-linux-x64.tar.gz";
+      sha256 = "98fbc9921291f969514c2a37a0b9b5bd84dcb84eb9a6f3303292a1ca3fbcc1ed";
+    };
+  };
   "latest-v4.x" = {
     "x86_64-darwin" = {
       url = "https://nodejs.org/dist/latest-v4.x/node-v4.9.1-darwin-x64.tar.gz";
@@ -9739,6 +9753,20 @@
     "x86_64-linux" = {
       url = "https://nodejs.org/dist/v27.0.0-alpha.0.1.1/node-v27.0.0-alpha.0.1.1-linux-x64.tar.gz";
       sha256 = "42ac750e1601cfc41399c5cebf03520d32cf7af3c8d210b14aaf7d2d5ec85f3f";
+    };
+  };
+  "v27.0.0-alpha.0.2.0" = {
+    "aarch64-darwin" = {
+      url = "https://nodejs.org/dist/v27.0.0-alpha.0.2.0/node-v27.0.0-alpha.0.2.0-darwin-arm64.tar.gz";
+      sha256 = "6cdb0bb6197e61d456b6161e259c5fe534c3ef516fbbb9a24eb86a59ba132e20";
+    };
+    "aarch64-linux" = {
+      url = "https://nodejs.org/dist/v27.0.0-alpha.0.2.0/node-v27.0.0-alpha.0.2.0-linux-arm64.tar.gz";
+      sha256 = "844ae340fdcd1acc8942368d2e2adf745ac86b0c21a308cc00ff7c93b130a215";
+    };
+    "x86_64-linux" = {
+      url = "https://nodejs.org/dist/v27.0.0-alpha.0.2.0/node-v27.0.0-alpha.0.2.0-linux-x64.tar.gz";
+      sha256 = "98fbc9921291f969514c2a37a0b9b5bd84dcb84eb9a6f3303292a1ca3fbcc1ed";
     };
   };
   "v4.0.0" = {
